@@ -1,28 +1,21 @@
+<!doctype html>
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>UI Implementation Test - Brian Elting</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
   <link rel="stylesheet" href="styles/main.css">
 </head>
 
 <body ng-app="pageDnaApp">
-  <h1>UI Implementation Test</h1>
-  <div ng-controller="MainController as main">
-
-    <form name="main.newColumnForm" ng-submit="main.addColumn()" novalidate>
-      <div ng-class="{'form-group': true, 'has-error': main.newColumnForm.$submitted && !main.newColumnForm.$valid }">
-        <label class="control-label" for="newColumnName">New column:</label>
-        <input type="text" id="newColumnName" class="form-control" ng-model="main.newColumnName" ng-pattern="main.columnNamePattern" required>
-        <button type="submit" class="btn btn-primary">Add</button>
-      </div>
-    </form>
-
+  <div class="container" ng-controller="MainController as main">
+    <h1>UI Implementation Test</h1>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <td ng-repeat="column in main.table.columns">{{column.name}} ({{column.count}})</td>
+          <th ng-repeat="column in main.table.columns">{{column.name}} ({{column.count}})</th>
         </tr>
       </thead>
       <tbody>
@@ -33,13 +26,29 @@
         </tr>
       </tbody>
     </table>
-
-    <button type="button" class="btn btn-primary" ng-click="main.viewJson()">View JSON</button>
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Add Columns</h2>
+        <form name="main.newColumnForm" ng-submit="main.addColumn()" novalidate>
+          <div ng-class="{'form-group': true, 'has-error': main.newColumnForm.$submitted && !main.newColumnForm.$valid }">
+            <label class="control-label" for="newColumnName">Column name</label>
+            <input type="text" id="newColumnName" class="form-control" ng-model="main.newColumnName" ng-pattern="main.columnNamePattern" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Regenerate JSON</h2>
+        <button type="button" class="btn btn-primary" ng-click="main.viewJson()">View</button>
+      </div>
+    </div>
   </div>
-
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
-
   <script src="scripts/config.js"></script>
   <script src="scripts/app.js"></script>
   <script src="scripts/main.controller.js"></script>

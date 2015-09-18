@@ -77,6 +77,6 @@ angular.module('pageDnaApp')
       row.states[item] = toColumn;
       getColumn(fromColumn).count--;
       getColumn(toColumn).count++;
-    }
+    };
 
   }]);
