@@ -2,6 +2,8 @@
 
 Created by Brian Elting
 
+View on Heroku at [https://brian-page-dna.herokuapp.com]https://brian-page-dna.herokuapp.com
+
 ## Getting started
 
 1. Install Node.js from [here](https://nodejs.org/en/download/)
