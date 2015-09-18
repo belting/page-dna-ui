@@ -39,6 +39,21 @@ angular.module('pageDnaApp')
       return -1;
     };
 
+    this.addColumn = function(name) {
+      tableData.columns.push({
+        name: name,
+        count: 0
+      });
+    };
+
+    this.getNextColumnName = function(currentName) {
+      var currentIndex = getColumnIndex(currentName);
+      if (currentIndex === -1 || currentIndex === tableData.columns.length - 1) {
+        return tableData.columns[0].name;
+      }
+      return tableData.columns[currentIndex + 1].name;
+    };
+
     this.initData = function() {
       return $q(function(resolve, reject) {
         $http.get(config.rowsUrl).then(function(response) {
@@ -52,12 +67,10 @@ angular.module('pageDnaApp')
       });
     };
 
-    this.getNextColumnName = function(currentName) {
-      var currentIndex = getColumnIndex(currentName);
-      if (currentIndex === -1 || currentIndex === tableData.columns.length - 1) {
-        return tableData.columns[0].name;
-      }
-      return tableData.columns[currentIndex + 1].name;
+    this.listColumnNames = function() {
+      return tableData.columns.map(function(column) {
+        return column.name;
+      });
     };
 
     this.swapItem = function(item, row, fromColumn, toColumn) {

@@ -9,7 +9,15 @@
 <body ng-app="pageDnaApp">
   <h1>UI Implementation Test</h1>
   <div ng-controller="MainController as main">
-    <p>{{main.test}}</p>
+
+    <form name="main.newColumnForm" ng-submit="main.onNewColumnSubmit()" novalidate>
+      <div ng-class="{'form-group': true, 'has-error': main.newColumnForm.$submitted && !main.newColumnForm.$valid }">
+        <label class="control-label" for="newColumnName">New column:</label>
+        <input type="text" id="newColumnName" class="form-control" ng-model="main.newColumnName" ng-pattern="main.columnNamePattern" required>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
