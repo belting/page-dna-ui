@@ -1,0 +1,28 @@
+{
+  "name": "page-dna-ui",
+  "version": "1.0.0",
+  "description": "Page DNA UI App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belting/page-dna-ui.git"
+  },
+  "author": "Brian Elting",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/belting/page-dna-ui/issues"
+  },
+  "homepage": "https://github.com/belting/page-dna-ui#readme",
+  "engines": {
+    "node": "0.12.x"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {
+    "eslint": "^1.4.3"
+  }
+}

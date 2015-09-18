@@ -1,0 +1,41 @@
+.btn {
+  border: 1px solid #EEE;
+  color: #FFF;
+  width: 80px;
+}
+.btn:hover {
+  color: #FFF;
+}
+
+.btn.red {
+  background-color: #F44336;
+}
+
+.btn.red:hover {
+  background-color: #D32F2F;
+}
+
+.btn.green {
+  background-color: #4CAF50;
+}
+
+.btn.green:hover {
+  background-color: #388E3C;
+}
+
+.btn.yellow {
+  background-color: #FFEB3B;
+  color: #000;
+}
+
+.btn.yellow:hover {
+  background-color: #FBC02D;
+}
+
+.btn.blue {
+  background-color: #2196F3;
+}
+
+.btn.blue:hover {
+  background-color: #1976D2;
+}
