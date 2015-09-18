@@ -1,18 +1,12 @@
 'use strict';
 
 angular.module('pageDnaApp')
-  .controller('MainController', ['TableService', function(Table) {
+  .controller('MainController', ['$modal', '$rootScope', 'TableService', function($modal, $rootScope, Table) {
     var $this = this;
 
     this.columnNamePattern = /^[A-F,N-Z]{1}(-\d{4})?$/;
 
-    this.onItemClick = function(row, item) {
-      var currentColumn = row.states[item];
-      var nextColumn = Table.getNextColumnName(currentColumn);
-      Table.swapItem(item, row, currentColumn, nextColumn);
-    };
-
-    this.onNewColumnSubmit = function() {
+    this.addColumn = function() {
       var isUnique = Table.listColumnNames().indexOf(this.newColumnName) === -1;
       this.newColumnForm.$setValidity('unique', isUnique);
 
@@ -23,7 +17,28 @@ angular.module('pageDnaApp')
       }
     };
 
-    Table.initData().then(function(data) {
-      $this.data = data;
+    this.moveItem = function(row, item) {
+      var currentColumn = row.states[item];
+      var nextColumn = Table.getNextColumnName(currentColumn);
+      Table.swapItem(item, row, currentColumn, nextColumn);
+    };
+
+    this.viewJson = function() {
+      var modalScope = $rootScope.$new();
+      modalScope.json = JSON.stringify(this.table.rows, function(key, value) {
+        if (key.substring(0, 2) == '$$') {
+          return undefined;
+        }
+        return value;
+      }, 2);
+
+      $modal.open({
+        templateUrl: '/partials/modal.html',
+        scope: modalScope
+      });
+    };
+
+    Table.initData().then(function(tableData) {
+      $this.table = tableData;
     });
   }]);

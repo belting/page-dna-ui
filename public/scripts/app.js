@@ -1,5 +1,6 @@
 'use strict';
 
 angular.module('pageDnaApp', [
-  'pageDnaConfig'
+  'pageDnaConfig',
+  'ui.bootstrap'
 ]);
