@@ -2,7 +2,7 @@
 
 Created by Brian Elting
 
-View on Heroku at [https://brian-page-dna.herokuapp.com]https://brian-page-dna.herokuapp.com
+View on Heroku at [https://brian-page-dna.herokuapp.com](https://brian-page-dna.herokuapp.com)
 
 ## Getting started
 
