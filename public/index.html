@@ -13,13 +13,13 @@
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <td ng-repeat="column in main.data.columns">{{column}}</td>
+          <td ng-repeat="column in main.data.columns">{{column.name}} ({{column.count}})</td>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="row in main.data.rows">
           <td ng-repeat="column in main.data.columns">
-            <button ng-repeat="item in row.sequence" ng-if="column === row.states[item]" ng-click="main.onItemClick(row, item)" ng-class="['btn', item]">{{item}}</button>
+            <button ng-repeat="item in row.sequence" ng-if="column.name === row.states[item]" ng-click="main.onItemClick(row, item)" ng-class="['btn', item]">{{item}}</button>
           </td>
         </tr>
       </tbody>

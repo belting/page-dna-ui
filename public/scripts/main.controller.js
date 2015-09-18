@@ -1,23 +1,16 @@
 'use strict';
 
 angular.module('pageDnaApp')
-  .controller('MainController', ['TableService', function(TableService) {
+  .controller('MainController', ['TableService', function(Table) {
     var $this = this;
 
-    var getNextColumn = function(columns, current) {
-      var currentIndex = columns.indexOf(current);
-      if (currentIndex === -1 || currentIndex === columns.length - 1) {
-        return columns[0];
-      }
-      return columns[currentIndex + 1];
-    };
-
     this.onItemClick = function(row, item) {
-      var nextColumn = getNextColumn($this.data.columns, row.states[item]);
-      row.states[item] = nextColumn;
+      var currentColumn = row.states[item];
+      var nextColumn = Table.getNextColumnName(currentColumn);
+      Table.swapItem(item, row, currentColumn, nextColumn);
     };
 
-    TableService.getData().then(function(data) {
+    Table.initData().then(function(data) {
       $this.data = data;
     });
   }]);
