@@ -4,7 +4,7 @@ angular.module('pageDnaApp')
   .controller('MainController', ['$modal', '$rootScope', 'TableService', function($modal, $rootScope, Table) {
     var $this = this;
 
-    this.columnNamePattern = /^[A-F,N-Z]{1}(-\d{4})?$/;
+    this.columnNamePattern = /^[A-F,N-Z]{1}(-\d{1,4})?$/;
 
     this.addColumn = function() {
       var isUnique = Table.listColumnNames().indexOf(this.newColumnName) === -1;
